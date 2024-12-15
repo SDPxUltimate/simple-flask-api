@@ -1,0 +1,49 @@
+[{
+  "uid": "100",
+  "firstName": "Kittipod",
+  "lastName": "Lambangchang",
+  "nickname": "Ton",
+  "githubUsername": "kittonn",
+  "age": "21",
+  "tools": ["github", "docker", "vm", "sql"]
+},{
+  "uid": "101",
+  "firstName": "Janista",
+  "lastName": "Kumwan",
+  "nickname": "Pang",
+  "githubUsername": "janipang",
+  "age": "20",
+  "tools": ["github", "next.js", "angular", "flask"]
+},{
+  "uid": "102",
+  "firstName": "Thanith",
+  "lastName": "Kongsamuth",
+  "nickname": "Momo",
+  "githubUsername": "ThanithK",
+  "age": "21",
+  "tools": ["github", "robot"]
+},{
+  "uid": "103",
+  "firstName": "whoishe",
+  "lastName": "idk",
+  "nickname": "anonymous",
+  "githubUsername": "EverydayImcalculating",
+  "age": "22",
+  "tools": ["procreate", "piano"]
+},{
+  "uid": "104",
+  "firstName": "Takdanai",
+  "lastName": "Deephuak",
+  "nickname": "Tak",
+  "githubUsername": "oTaKaTo",
+  "age": "20",
+  "tools": ["OAuth", "Formik", "AI", "ML"]
+},{
+  "uid": "105",
+  "firstName": "Nutchanon",
+  "lastName": "Mongkonvilas",
+  "nickname": "Gymsus",
+  "githubUsername": "Nutchanon28",
+  "age": "21",
+  "tools": ["openCV", "SuperSoftwareWorker", "reporter"]
+}]
