@@ -5,7 +5,7 @@ a simple api using flask, provided 5 end points with RESTful design.
 - ```pip install flask``` 
 
 # to run the app
-1. you must jump into /app folder
+1. you must jump into /app folder using ```cd app```
 2. run the command ```python app.py```
 
 # 5 endpoints existed
