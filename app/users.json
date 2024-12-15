@@ -1,49 +1,90 @@
-[{
-  "uid": "100",
-  "firstName": "Kittipod",
-  "lastName": "Lambangchang",
-  "nickname": "Ton",
-  "githubUsername": "kittonn",
-  "age": "21",
-  "tools": ["github", "docker", "vm", "sql"]
-},{
-  "uid": "101",
-  "firstName": "Janista",
-  "lastName": "Kumwan",
-  "nickname": "Pang",
-  "githubUsername": "janipang",
-  "age": "20",
-  "tools": ["github", "next.js", "angular", "flask"]
-},{
-  "uid": "102",
-  "firstName": "Thanith",
-  "lastName": "Kongsamuth",
-  "nickname": "Momo",
-  "githubUsername": "ThanithK",
-  "age": "21",
-  "tools": ["github", "robot"]
-},{
-  "uid": "103",
-  "firstName": "whoishe",
-  "lastName": "idk",
-  "nickname": "anonymous",
-  "githubUsername": "EverydayImcalculating",
-  "age": "22",
-  "tools": ["procreate", "piano"]
-},{
-  "uid": "104",
-  "firstName": "Takdanai",
-  "lastName": "Deephuak",
-  "nickname": "Tak",
-  "githubUsername": "oTaKaTo",
-  "age": "20",
-  "tools": ["OAuth", "Formik", "AI", "ML"]
-},{
-  "uid": "105",
-  "firstName": "Nutchanon",
-  "lastName": "Mongkonvilas",
-  "nickname": "Gymsus",
-  "githubUsername": "Nutchanon28",
-  "age": "21",
-  "tools": ["openCV", "SuperSoftwareWorker", "reporter"]
-}]
+[
+  {
+    "age": "21",
+    "firstName": "Kittipod",
+    "githubUsername": "kittonn",
+    "lastName": "Lambangchang",
+    "nickName": "Ton",
+    "tools": [
+      "github",
+      "docker",
+      "vm",
+      "sql"
+    ],
+    "uid": "100"
+  },
+  {
+    "age": "20",
+    "firstName": "Janista",
+    "githubUsername": "janipang",
+    "lastName": "Kumwan",
+    "nickName": "Pang",
+    "tools": [
+      "github",
+      "next.js",
+      "angular",
+      "flask"
+    ],
+    "uid": "101"
+  },
+  {
+    "age": 21,
+    "firstName": "Thanith",
+    "githubUsername": "ThanithK",
+    "lastName": "Kongsamuth",
+    "nickName": "Momo",
+    "tools": [
+      "github",
+      "robot"
+    ],
+    "uid": "102"
+  },
+  {
+    "age": 22,
+    "firstName": "whoishe",
+    "githubUsername": "EverydayImcalculating",
+    "lastName": "idk",
+    "nickName": "anonymous",
+    "tools": [
+      "procreate",
+      "piano"
+    ],
+    "uid": "103"
+  },
+  {
+    "age": 20,
+    "firstName": "Takdanai",
+    "githubUsername": "oTaKaTo",
+    "lastName": "Deephuak",
+    "nickName": "Tak",
+    "tools": [
+      "OAuth",
+      "Formik",
+      "AI",
+      "ML"
+    ],
+    "uid": "104"
+  },
+  {
+    "age": 21,
+    "firstName": "Nutchanon",
+    "githubUsername": "Nutchanon28",
+    "lastName": "Mongkonvilas",
+    "nickName": "Gymsus",
+    "tools": [
+      "openCV",
+      "SuperSoftwareWorker",
+      "reporter"
+    ],
+    "uid": "105"
+  },
+  {
+    "age": 42,
+    "firstName": "Chalermsri",
+    "githubUsername": null,
+    "lastName": "Meesukh",
+    "nickName": "Samorn",
+    "tools": [],
+    "uid": "106"
+  }
+]
