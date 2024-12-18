@@ -1,25 +1,45 @@
 # simple-flask-api
 a simple api using flask, provided 5 end points with RESTful design. 
 
-# install dependencies
-- ```pip install flask``` 
+## Installation
+1. Set up a virtual environment:
+    ```bash
+    python3 -m venv venv  
+    ```
 
-# to run the app
-1. you must jump into /app folder using ```cd app```
-2. run the command ```python app.py```
+2. Activate the virtual environment:
 
-# 5 endpoints existed
+  - For macOS/Linux:
+      ```bash
+      source venv/bin/activate  
+      ```
+  - For Windows:
+      ```bash
+      venv\Scripts\activate  
+      ```
+3. Install dependencies:
+
+    ```bash
+    pip install -r requirements.txt 
+    ```
+
+## Running the Application
+1. Navigate to the /app directory:
+    ```bash
+    cd app
+    ```
+2. Run the Flask app:
+    ```bash
+    python app.py
+    ```
+
+## API Endpoints
 1. GET /user
 2. POST /user/new
 3. PUT /user/[uid]
 4. GET /user/[uid]
 5. DELETE /user/[uid]
 
-# user schema
-  - uid: number,
-  - firstName: string,
-  - lastName: string,
-  - nickName: string (max 25 char),
-  - githubUsername: string,
-  - age: number (min 0, max 200),
-  - tools: string[]
+# users entity
+
+![ERD](./docs/erd.png)
