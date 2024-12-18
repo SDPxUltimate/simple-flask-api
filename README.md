@@ -8,11 +8,12 @@ a simple api using flask, provided 5 end points with RESTful design.
     ```
 
 2. **Activate the virtual environment:**
-    - For macOS/Linux:
+  - For macOS/Linux:
       ```bash
       source venv/bin/activate  
       ```
-    - For Windows:
+
+  - For Windows:
       ```bash
       venv\Scripts\activate  
       ```
@@ -41,4 +42,5 @@ a simple api using flask, provided 5 end points with RESTful design.
 
 # users entity
 
-![ERD](./docs/erd.png)
+<img src="./docs/erd.png" alt="ERD" width="300" />
+
