@@ -1,0 +1,17 @@
+services:
+  db:
+    image: mysql:latest
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: strong-password
+      MYSQL_USER: sdpx
+      MYSQL_PASSWORD: sdpx
+      MYSQL_DATABASE: sdpx  
+    volumes:
+      - mydb:/var/lib/mysql
+      - ./scripts:/docker-entrypoint-initdb.d:ro
+    ports:
+      - 3306:3306
+      
+volumes:
+  mydb:
