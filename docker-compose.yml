@@ -1,4 +1,22 @@
 services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      MYSQL_HOST: db
+      MYSQL_USER: sdpx
+      MYSQL_PASSWORD: sdpx
+      MYSQL_DATABASE: sdpx
+    ports:
+      - 8081:8081
+    networks:
+      - app-networks
+    depends_on:
+      db:
+        condition: service_healthy
+
   db:
     image: mysql:latest
     restart: unless-stopped
@@ -12,6 +30,18 @@ services:
       - ./scripts:/docker-entrypoint-initdb.d:ro
     ports:
       - 3306:3306
+    networks:
+      - app-networks
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "--host=127.0.0.1", "--user=$$MYSQL_USER", "--password=$$MYSQL_PASSWORD"]
+      interval: 30s
+      retries: 3
+      start_period: 10s
+      timeout: 5s
       
 volumes:
   mydb:
+
+networks:
+  app-networks:
+    driver: bridge
