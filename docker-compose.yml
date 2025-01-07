@@ -1,37 +1,77 @@
 services:
-  api:
+  api-dev:
     build:
       context: .
       dockerfile: Dockerfile
     restart: unless-stopped
     environment:
-      MYSQL_HOST: db
-      MYSQL_USER: sdpx
-      MYSQL_PASSWORD: sdpx
-      MYSQL_DATABASE: sdpx
+      MYSQL_HOST: db-dev
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: db4dev$
+      MYSQL_DATABASE: db-dev
     ports:
-      - 8081:8081
+      - "8081:8081"
     networks:
-      - app-networks
+      - dev-network
     depends_on:
-      db:
+      db-dev:
         condition: service_healthy
 
-  db:
+  db-dev:
     image: mysql:latest
     restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: strong-password
-      MYSQL_USER: sdpx
-      MYSQL_PASSWORD: sdpx
-      MYSQL_DATABASE: sdpx  
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: db4dev$
+      MYSQL_DATABASE: db-dev  
     volumes:
-      - mydb:/var/lib/mysql
+      - dev-volume:/var/lib/mysql
       - ./scripts:/docker-entrypoint-initdb.d:ro
     ports:
-      - 3306:3306
+      - "3306:3306"
     networks:
-      - app-networks
+      - dev-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "--host=127.0.0.1", "--user=$$MYSQL_USER", "--password=$$MYSQL_PASSWORD"]
+      interval: 30s
+      retries: 3
+      start_period: 10s
+      timeout: 5s
+
+  api-test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      MYSQL_HOST: db-test
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: db4test$
+      MYSQL_DATABASE: db-test
+    ports:
+      - "8082:8081"
+    networks:
+      - test-network
+    depends_on:
+      db-test:
+        condition: service_healthy
+
+  db-test:
+    image: mysql:latest
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: strong-password
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: db4test$
+      MYSQL_DATABASE: db-test  
+    volumes:
+      - test-volume:/var/lib/mysql
+      - ./scripts:/docker-entrypoint-initdb.d:ro
+    ports:
+      - "3001:3306"
+    networks:
+      - test-network
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "--host=127.0.0.1", "--user=$$MYSQL_USER", "--password=$$MYSQL_PASSWORD"]
       interval: 30s
@@ -40,8 +80,11 @@ services:
       timeout: 5s
       
 volumes:
-  mydb:
+  dev-volume:
+  test-volume:
 
 networks:
-  app-networks:
+  dev-network:
+    driver: bridge
+  test-network:
     driver: bridge
