@@ -1,0 +1,47 @@
+services:
+  api-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      MYSQL_HOST: db-dev
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: db4dev$
+      MYSQL_DATABASE: db-dev
+    ports:
+      - "8081:8081"
+    networks:
+      - dev-network
+    depends_on:
+      db-dev:
+        condition: service_healthy
+
+  db-dev:
+    image: mysql:latest
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: strong-password
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: db4dev$
+      MYSQL_DATABASE: db-dev  
+    volumes:
+      - dev-volume:/var/lib/mysql
+      - ./scripts:/docker-entrypoint-initdb.d:ro
+    ports:
+      - "3306:3306"
+    networks:
+      - dev-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "--host=127.0.0.1", "--user=$$MYSQL_USER", "--password=$$MYSQL_PASSWORD"]
+      interval: 30s
+      retries: 3
+      start_period: 10s
+      timeout: 5s
+      
+volumes:
+  dev-volume:
+
+networks:
+  dev-network:
+    driver: bridge

@@ -1,0 +1,47 @@
+services:
+  api-test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      MYSQL_HOST: db-test
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: db4test$
+      MYSQL_DATABASE: db-test
+    ports:
+      - "8082:8081"
+    networks:
+      - test-network
+    depends_on:
+      db-test:
+        condition: service_healthy
+
+  db-test:
+    image: mysql:latest
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: strong-password
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: db4test$
+      MYSQL_DATABASE: db-test  
+    volumes:
+      - test-volume:/var/lib/mysql
+      - ./scripts:/docker-entrypoint-initdb.d:ro
+    ports:
+      - "3001:3306"
+    networks:
+      - test-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "--host=127.0.0.1", "--user=$$MYSQL_USER", "--password=$$MYSQL_PASSWORD"]
+      interval: 30s
+      retries: 3
+      start_period: 10s
+      timeout: 5s
+      
+volumes:
+  test-volume:
+
+networks:
+  test-network:
+    driver: bridge
